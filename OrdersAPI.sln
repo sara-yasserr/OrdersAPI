@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersAPI.API", "OrdersAPI.API\OrdersAPI.API.csproj", "{2E9A84AA-1E78-4EBF-86F1-5F4333A52132}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersAPI.Core", "OrdersAPI.Core\OrdersAPI.Core.csproj", "{C38694A3-5FD7-4BEF-A5BC-8E001E004485}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrdersAPI.Infrastructure", "OrdersAPI.Infrastructure\OrdersAPI.Infrastructure.csproj", "{86390566-63B1-4B86-91E6-5B128ED2BB2E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4B6F737-C89A-4496-B529-F28446AACA9D}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
