@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using OrdersAPI.API.Dtos.OrderDtos;
+using OrdersAPI.API.Mappings;
 using OrdersAPI.Core.Interfaces;
 using OrdersAPI.Core.Models;
 using StackExchange.Redis;
@@ -10,20 +13,22 @@ namespace OrdersAPI.API.Controllers
     public class OrdersController(
             IOrderRepository _orderRepository,
             ICacheService _cacheService,
-            ILogger<OrdersController> _logger) : ControllerBase
+            ILogger<OrdersController> _logger,
+            IMapper _mapper) : ControllerBase
     {
         private const string CacheKeyPrefix = "order_";
         private static readonly TimeSpan CacheTTL = TimeSpan.FromMinutes(5);
 
         // POST /api/orders
         [HttpPost]
-        public async Task<ActionResult<Order>> CreateOrder([FromBody] Order order)
+        public async Task<ActionResult<Order>> CreateOrder([FromBody] CreateOrderDto orderDto)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
+                Order order = _mapper.Map<Order>(orderDto);
                 var createdOrder = await _orderRepository.CreateAsync(order);
                 _logger.LogInformation("Order {OrderId} created successfully", createdOrder.OrderId);
 
@@ -80,7 +85,7 @@ namespace OrdersAPI.API.Controllers
             try
             {
                 var orders = await _orderRepository.GetAllAsync();
-                _logger.LogInformation("Retrieved {Count} orders from database and cached", orders.Count());
+                _logger.LogInformation("Retrieved {Count} orders from database", orders.Count());
                 return Ok(orders);
             }
             catch (Exception ex)

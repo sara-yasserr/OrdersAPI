@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi;
 using Microsoft.OpenApi.Models;
 using OrdersAPI.API.Middleware;
@@ -6,7 +7,11 @@ using OrdersAPI.Core.Interfaces;
 using OrdersAPI.Infrastructure.Data;
 using OrdersAPI.Infrastructure.Repositories;
 using OrdersAPI.Infrastructure.Services;
+using AutoMapper;
+//using AutoMapper.Extensions.Microsoft.DependencyInjection
+
 using Serilog;
+using OrdersAPI.API.Mappings;
 
 namespace OrdersAPI.API
 {
@@ -28,6 +33,7 @@ namespace OrdersAPI.API
 
             // Add services to the container.
             builder.Services.AddControllers();
+            builder.Services.AddAutoMapper(cfg =>{cfg.AddProfile(new AutoMapperConfig());});
 
             #region Configure CORS
             builder.Services.AddCors(options =>
