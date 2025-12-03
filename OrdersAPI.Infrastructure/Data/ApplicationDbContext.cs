@@ -24,6 +24,10 @@ namespace OrdersAPI.Infrastructure.Data
                 entity.Property(e => e.CustomerName).IsRequired().HasMaxLength(200);
                 entity.Property(e => e.Product).IsRequired().HasMaxLength(200);
                 entity.Property(e => e.Amount).HasPrecision(18, 2);
+                entity.ToTable(t =>
+                {
+                    t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 1");
+                });
             });
         }
     }
