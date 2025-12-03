@@ -13,7 +13,7 @@ namespace OrdersAPI.API.Dtos.OrderDtos
         public string Product { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Amount is required")]
-        [Range(1, double.MaxValue, ErrorMessage = "Amount must be greater than 0")]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Amount must be greater than 0")]
         public decimal Amount { get; set; }
     }
 }

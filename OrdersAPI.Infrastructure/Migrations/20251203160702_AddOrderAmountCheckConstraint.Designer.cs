@@ -12,7 +12,7 @@ using OrdersAPI.Infrastructure.Data;
 namespace OrdersAPI.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251203020938_AddOrderAmountCheckConstraint")]
+    [Migration("20251203160702_AddOrderAmountCheckConstraint")]
     partial class AddOrderAmountCheckConstraint
     {
         /// <inheritdoc />
@@ -52,7 +52,7 @@ namespace OrdersAPI.Infrastructure.Migrations
 
                     b.ToTable("Orders", t =>
                         {
-                            t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 1");
+                            t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 0.01");
                         });
                 });
 #pragma warning restore 612, 618

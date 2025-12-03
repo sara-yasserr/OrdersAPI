@@ -26,7 +26,7 @@ namespace OrdersAPI.Infrastructure.Data
                 entity.Property(e => e.Amount).HasPrecision(18, 2);
                 entity.ToTable(t =>
                 {
-                    t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 1");
+                    t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 0.01");
                 });
             });
         }

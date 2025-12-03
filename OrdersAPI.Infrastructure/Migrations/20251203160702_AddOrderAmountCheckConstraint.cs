@@ -13,7 +13,7 @@ namespace OrdersAPI.Infrastructure.Migrations
             migrationBuilder.AddCheckConstraint(
                 name: "CK_Order_Amount_MinValue",
                 table: "Orders",
-                sql: "Amount >= 1");
+                sql: "Amount >= 0.01");
         }
 
         /// <inheritdoc />

@@ -49,7 +49,7 @@ namespace OrdersAPI.Infrastructure.Migrations
 
                     b.ToTable("Orders", t =>
                         {
-                            t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 1");
+                            t.HasCheckConstraint("CK_Order_Amount_MinValue", "Amount >= 0.01");
                         });
                 });
 #pragma warning restore 612, 618
