@@ -9,9 +9,9 @@ namespace OrdersAPI.Core.Interfaces
 {
     public interface IOrderRepository
     {
-        Task<Order> CreateAsync(Order order);
-        Task<Order?> GetByIdAsync(Guid id);
         Task<IEnumerable<Order>> GetAllAsync();
+        Task<Order?> GetByIdAsync(Guid id);
+        Task<Order> CreateAsync(Order order);
         Task<bool> DeleteAsync(Guid id);
     }
 }
